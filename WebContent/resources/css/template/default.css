@@ -1,0 +1,413 @@
+/**
+*	@desc:  	Regras que manipulam os elementos comuns em todo os site.
+*	@author: 	Eduardo Marinho;
+*	@version:	1.0.0 | 11/10/17 - 12:44;
+*	@notes: 	Para utilizar os recursos desses estilos, adicione a classe "SD",
+*				na TAG BODY da aplicação, caso contrário o estilo não será aplicado.
+*	@notes: url("#{resource['images/background.png']}")
+*/
+
+/*@desc: classe de ativação das regras*/
+.sd{}
+*{
+	margin: 0px;
+	padding: 0px;
+}
+/* @desc: controle de link*/
+.sd a{ 
+	color: inherit; 
+	text-decoration: none;
+}
+.sd .a:hover{ 
+	background-color: yellow; 
+	text-decoration: underline !important;
+}
+/* @desc: controle de seleção*/
+.sd .pointer{ cursor: pointer;}
+/* @desc: controle de posicionamento*/
+.sd .center{ text-align: center;}
+.sd .left{ text-align: left;}
+.sd .right{ text-align: right;}
+.sd .justify{ text-align: justify;}
+.sd .hide{ display: none;}
+.sd .show {display: block;}
+
+/* @desc: controle de animações*/
+.sd .transition{transition: ease 0.5s;}
+
+/* @desc: controle de DOM*/
+body, html{
+	min-height: 100%;
+	width: 100%;
+}
+/*@note: a cor do fundo pode ser modificada de acordo com o tema da aplicação.*/
+body{
+	background: #f2f2f2;
+	font-family: "Lato";
+	font-size: 14px;
+	scroll-behavior: smooth;
+}
+
+/**
+* @Desc: regra do elemento que forma a estrutura do site. Habilite-o, caso deseje incorporar o FOOTER.
+**/
+.sd .content{
+	min-height: calc(100vh - 44px);
+}
+
+/**
+* @Desc: HEADER
+* @note: o esquema de cores pode ser alterado de acordo com o tema.
+**/
+.sd header{
+	background-image: linear-gradient(to top, #e5e5e5, #fff);
+	min-height: 50px;
+}
+.sd header #menuNavegacao{
+	margin: 0 auto;
+}
+.sd header .menu-sistema{
+	display: table;
+	height: 50px;
+	width: 100%;
+}
+.sd header .menu-sistema li{
+	display: table-cell;
+}
+.sd header .menu-sistema .logo{
+	background-image: url("#{resource['images/logo.png']}");
+	background-position: 10px;
+	background-repeat: no-repeat;
+	background-size: 100px;
+	padding: 15px;
+	width: 150px;
+}
+.sd header .menu-sistema .title{
+	color: #5c9ccc;
+	font-size: 12px;
+	text-align: center;
+	vertical-align: middle;
+}
+.sd header .menu-sistema .user{
+	font-size: 11px;
+	max-width: 150px;
+	padding-bottom: 10px;
+	width: 150px;
+	text-align: left;
+}
+.sd header .menu-sistema .user:hover{
+    background-color: #ccc;
+    cursor: pointer;
+}
+.sd header .menu-sistema .user img{
+	height: 1.5em;
+	margin: 5px;
+	position: relative;	
+	top: 8px;
+}
+.sd header ul#menuNavegacao{
+	background-color: #a5b1c2;
+	height: auto;
+	width: 100%;
+}
+.sd header #menuNavegacao li{
+	border-right: 1px dashed #ccc;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+}
+.sd header #menuNavegacao li:hover{
+	background-color: #000832;
+}
+.sd header #menuNavegacao .dropbtn{
+	padding: 10px;
+}
+.sd #containMenUsuario{
+    background-color: #fff;
+	border: 1px solid #ccc;
+	border-top: 0px;
+    border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	box-shadow: 0px 1px 1px #3c3c3c;
+    display: none;
+    height: auto;
+    min-width: 100px;
+    width: 200px;
+    position: absolute;
+    padding: 5px 0px;
+    right: 0;
+	top: 50px;
+	z-index: 2;
+}
+.sd #containMenUsuario ul li{
+    cursor: pointer;
+	list-style: none;
+	text-align: left;
+    padding: 5px;
+    width: 190px;
+}
+.sd #containMenUsuario ul li:nth-child(odd){
+	/*background-color: #fafafa;*/
+}
+.sd #containMenUsuario ul li:hover{
+	background-color: #5c9ccc;
+	color: #fff;
+}
+.sd #containMenUsuario .userName{
+	color: #5c9ccc;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 5px;
+}
+/**
+* 	@Desc: Cards
+**/
+.container-card{
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin: 20px auto;
+	max-width: 960px;
+	padding: 20px;
+}
+.container-card label{
+	color: #8c8c8c;
+	font-weight: 600;		
+}
+/*---------------------*/
+
+/**
+* @Desc: MAIN
+***/
+#content-main{
+	width: 100%;
+	height: auto;
+	padding:2vh 0vh;
+}
+.main{
+	background-color: #fff;
+	box-shadow: 0px 0px 2px 1px #ccc;
+	border-radius: 3px;
+	margin: 5vh auto;
+	max-width: 1200px;
+	min-height: 200px;
+	padding: 20px;
+	height: 100%;
+	width: calc(100% - 20%);
+}
+.main .title{
+	color: #3c3c3c;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 10px 0px;
+	text-transform: uppercase;
+}
+.container-title img{
+	background-color: pink;
+   	padding: 10px;
+   	border-radius: 100%;
+   	position: absolute;
+   	top: 8px;
+   	left: 0px;
+   	height: 25px;
+}
+/**
+* @Desc: Footer
+**/
+footer{
+	background-color: #dcdcdc;
+	color: #3c3c3c;
+	font-size: 10px;
+	height: auto;
+	width: 100%;
+}
+footer > div{
+	padding: 10px 0px;
+}
+footer > canvas.upper{
+	background-color: #1c1c1c;
+	background-image:url("#{resource['images/sistema/icones/up_arrow.png']}"); 
+	background-position: center;
+	background-repeat: no-repeat;
+	border: 3px solid #ccc;
+	border-radius: 100%;
+	cursor: pointer;
+	display: none;
+	float: left;
+	height: 30px;
+	right: 1px;
+	position: fixed;
+	bottom: 1em;
+	opacity: 0.5;
+	width: 30px;
+	z-index: 1;
+}
+footer > canvas:hover{
+	filter: invert(100%);
+}
+
+/**
+* @Desc: modifica os elementos para gerar contexto DropDown
+**/
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown .dropbtn {
+    cursor: pointer;
+    outline: none;
+    color: white;
+    padding: 10px 5px;
+    min-width: 100px;
+    text-align: center;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+    background-color: #044374;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.6);
+    z-index: 1;
+}
+
+.dropdown-content a{
+    float: none;
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/**
+* @Desc: PAGINAÇÃO
+**/
+.container-paginacao{
+	padding: 10px 0px;
+}
+.container-paginacao a{
+	border:1px solid #5c9ccc;
+	border-radius: 100%;
+	color: #3c3c3c;
+	cursor: pointer;
+	padding: 5px 10px;
+	text-align: center;
+}
+.container-paginacao a:hover{
+	background-color: #5c9ccc;
+	color: #fff;
+}
+
+/**
+*	@desc: Regras de apoio
+**/
+
+/*@desc: cria um elemento em linha, utilizado para comportar ou agrupar elementos em uma única linha*/
+div.row{
+	display: block;
+	padding: 10px 0px;
+}
+div.table{
+	display: table;
+	width: 100%;
+}
+div.tCell{
+	display: table-cell;
+}
+
+/**
+*	HACKS
+*	@desc: sobrescreve regras de plugins.
+*	@note: tome cuidado ao sobrescrever essas regras, podem afetar elementos no layout.
+**/
+
+/* @desc: oculta a exibição de valores do calendário no corpo do FOOTER*/
+.bootstrap-timepicker-widget{
+    display: none !important;
+}
+
+/**INFO*/
+.sd .info{
+	border-radius: 2px;
+	font-size: 13px;
+	padding: 8px 5px;
+	margin: 10px auto;
+	width: auto;
+}
+
+.sd .info ol.instructions{
+	padding: 2px 0px;
+	padding-left: 20px;
+}
+
+.sd .info ol.instructions li{
+	list-style: disclosure-closed;
+}
+
+/**
+* @Desc: Estilo dos formulários.
+**/
+form.search,form.search input[type="text"]{ width: 100% !important;}
+form.search input[type="text"]{padding: 8px !important;}
+form.search button{height: 35px; max-width: 35px;}
+
+/**
+*  @desc: importa a fonte para o sistema.
+**/
+@font-face{
+	font-family: 'Lato';
+	/*src: url('../fonts/Lato.ttf');*/
+	src: url("#{resource['fonts/Lato.ttf']}");
+}
+
+/**
+*  @desc: regras para controle de mobiles de >= 4.5 polegadas.
+**/
+@media only screen and (min-device-height: 4em) and (max-width:400px){
+	header .title{ display: none;}
+	.main .title{ text-align: center;}
+	.custom-table-hidden{display: none !important;}
+	.container-title{ font-size: 0.8em; }
+	.container-title img{
+	   	top: 5px;
+	   	height: 15px;
+	}
+}
+@media only screen and (min-device-height: 4em) and (max-width:800px){
+	header .menu-sistema .title h2,
+	header #menu-navegacao{ 
+		display: none;
+	}
+	header #menuNavegacao li{
+		display: block !important;
+	}
+	header #menuNavegacao li a{
+		padding: 10px 0px !important;
+		text-align: center;
+		width: 100%;
+	}
+	main{
+		box-shadow: 0px 0px 0px 0px;
+	}
+	.main .title{ text-align: center;}
+	/*Desabilita o Tooltip para mobiles*/
+	.ui-tooltip{display: none !important;}
+	select{ min-width: 100%;}
+	textarea{padding: 0;}
+	td.resize_mobile_section{
+		float: left;
+		width: 100%;
+	}
+}

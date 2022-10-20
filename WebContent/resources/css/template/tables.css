@@ -1,0 +1,140 @@
+/**
+*	@author: 	Eduardo Marinho;
+*	@since:		16/03/17
+*	@version:   1.0.0
+*	@validade em: https://jigsaw.w3.org/css-validator/validator [W3C];
+**/
+
+.sd table.light, .sd table.grid, .sd table.flat{
+	min-width: 100%;
+}
+
+.sd table.light caption,
+.sd table.grid caption,
+.sd table.flat caption{
+	font-weight: bold;
+	padding: 10px;
+}
+/*============================================*/
+/* @Desing de tabela FLAT
+/**===========================================*/
+.sd table.flat{
+	background-color: #fff;
+	border: 1px solid #efefef;
+	border-radius: 5px;
+	border-collapse: collapse;
+	font-size: 12px;
+	width: 100%;
+}
+
+/**
+*	@desc: define as regras do cabeçalho da tabela
+**/
+.sd table.flat thead tr th,
+.sd table.flat caption{
+	background-color: #a5b1c2; /*Cor do cabeçalho*/
+	color: #fff; /*Cor do fonte*/
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 7px;
+}
+
+/**
+*	@desc: cores alternadas nas linhas da tabela
+**/
+.sd table.flat > tbody tr:nth-child(even){ background-color: #f2f2f2;}
+.sd table.flat > tbody tr:hover{ background-color: #ccc;}
+
+/**
+*	@desc: regras de espaçamento das células
+**/
+.sd table.flat > tbody td{ padding: 5px; /*text-transform: capitalize;*/}
+
+/*============================================*/
+/* @Desing de tabela GRID
+/**===========================================*/
+.sd table.grid{
+	background-color: #fff;
+	border-collapse: collapse;
+	font-size: 12px;
+	width: 100%;
+}
+.sd table.grid >thead tr th,
+.sd table.grid caption{ 	
+	background-color: #5c9ccc; /*Cor do cabeçalho*/
+	color: #fff;
+}
+.sd table.grid, .sd table.grid td, .sd table.grid th{border: 1px solid #ddd;}
+
+/**
+*	@desc: cores alternadas nas linhas da tabela
+**/
+.sd table.grid > tbody tr:hover{ background-color: #ccc;}
+
+
+/**
+*	@desc: regras de espaçamento das células
+**/
+.sd table.grid td, .sd table.grid th{ padding: 10px;}
+
+/*============================================*/
+/* @Desing de tabela LIGHT
+/**===========================================*/
+.sd table.light{
+	background-color: #fff;
+	border-collapse: collapse;
+	font-size: 12px;
+	width: 100%;
+}
+.sd table.light > thead tr th,
+.sd table.light caption{
+	background-color: #5c9ccc; /*Cor do cabeçalho*/
+	color: #fff;
+}
+.sd table.light > tbody tr td{
+	border-bottom: 1px solid #ddd;
+}
+.sd table.light > tbody tr tr:hover {background-color:#f5f5f5;}
+
+.sd table.light thead > tr th, .sd table.light tbody > tr td{
+	padding: 10px 5px;
+} 
+/**
+*	@desc: cores alternadas nas linhas da tabela
+**/
+.sd table.light > tbody tr:hover{ background-color: #ccc;}
+
+/*============================================*/
+/* @Desc: Borda
+/**===========================================*/
+.sd table.border td, .sd table.border th, .sd table.border caption{
+	border: 1px solid #ddd;
+}
+
+/*============================================*/
+/* @Desc: modificadores de conteúdos
+/**===========================================*/
+
+.sd .container-count label#cc-value{color: #000;}
+
+/*============================================*/
+/* @Desc: modificadores de tamanho das colunas por tipo
+/**===========================================*/
+
+.sd table thead tr th.hora{ width: 40px;}
+.sd table thead tr th.button{ width: 30px;}
+.sd table thead tr th.target{ cursor: pointer; text-align: center; width: 10px;}
+
+/*============================================*/
+/* @Desc: Linha de destaque
+/**===========================================*/
+.sd table tr.pastel{
+	background-color:rgb(255, 229, 229)!important;
+	color: #3c3c3c;
+}
+.sd table tr.pastel:hover{
+	background-color:rgb(255, 156, 153)!important;
+}
+@media only screen and (min-device-height: 4em) and (max-width:800px){
+	input[type="checkbox"]{ height: 25px; width: 25px;}
+}

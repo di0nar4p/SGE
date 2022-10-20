@@ -1,0 +1,68 @@
+<ui:decorate 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    template="/template/layout.xhtml"> 
+    <ui:define name="main">
+    	<div class="row title center silver paralel">Usuários</div>
+		<div class="row">
+    		<h:form rendered="#{sessaoMB.usuario.tipoUsuario.codigo == 3 || sessaoMB.usuario.tipoUsuario.codigo == 4 || sessaoMB.usuario.tipoUsuario.codigo == 5 || sessaoMB.usuario.tipoUsuario.codigo == 6}">
+    			<h:commandButton action="#{navMB.redirect('usuario/_cadastro')}" id="btnCadastrar" styleClass="emerald" title="Cadastrar Turmas" value="Novo Usuário" />
+    		</h:form>
+    	</div>
+    	<div class="row">
+    		<h:form styleClass="finder">
+    			<h:inputText id="pesquisar" name="pesquisar" placeholder="Pesquisar..." title="Pesquisar" value="#{usuarioMB.usuario.misc}" />
+    			<h:commandButton action="#{usuarioMB.pesquisar()}" id="btn-pesquisar" styleClass="sapphire" title="Pesquisar" value="Pesquisar" />
+    		</h:form>
+    	</div>
+    	<div class="row">
+    		<h:outputLabel value="Total de registros: #{usuarioMB.qtd}" />
+    	</div>
+    	<h:form>
+		<h:dataTable styleClass="row flat border" value="#{usuarioMB.lista}" var="usuario">	
+			<h:column>
+				<f:facet name = "header">Nome</f:facet>
+				<h:outputText value="#{usuario.nomeCompleto}" />
+			</h:column>			
+			<h:column>
+				<f:facet name = "header">Matrícula</f:facet>
+				<h:outputText value="#{usuario.matricula}" />
+			</h:column>
+			<h:column>
+				<f:facet name = "header">Nome Usuário</f:facet>
+				<h:outputText value="#{usuario.nomeUsuario}" />
+			</h:column>			
+			<h:column>
+				<f:facet name = "header">E-mail</f:facet>
+				<h:outputText value="#{usuario.contato.email}" />
+			</h:column>
+			<h:column>
+				<f:facet name = "header">Tipo Usuario</f:facet>
+				<h:outputText value="#{usuario.tipoUsuario.nome}" />
+			</h:column>
+			<h:column headerClass="actions" rendered="#{sessaoMB.usuario.tipoUsuario.codigo == 3 || sessaoMB.usuario.tipoUsuario.codigo == 4 || sessaoMB.usuario.tipoUsuario.codigo == 5 || sessaoMB.usuario.tipoUsuario.codigo == 6}">
+				<h:commandLink action="#{usuarioMB.removerRegistro()}" styleClass="icon icon_delete" title="Apagar Registro" value="">
+					<f:setPropertyActionListener target="#{usuarioMB.usuario}" value="#{usuario}" ></f:setPropertyActionListener>
+				</h:commandLink>
+				<h:commandLink action="#{navMB.redirect('usuario/_editar')}" styleClass="icon icon_edit" title="Editar" value="">
+						<f:setPropertyActionListener value="#{usuario}" target="#{usuarioMB.usuario}" />
+				</h:commandLink>
+			</h:column>
+		</h:dataTable>
+		</h:form>
+		<div class="row">
+			<h:form>
+				<h:commandButton action="#{navMB.goToHome}" styleClass="ruby" title="Retornar" value="Retornar" />
+			</h:form>
+		</div>
+		<style>
+			.actions{min-width: 30px;}
+			form.finder input[type="submit"]{
+				top: -35px !important;
+			}
+		</style>
+    </ui:define>
+</ui:decorate>

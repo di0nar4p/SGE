@@ -1,0 +1,40 @@
+<ui:decorate 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    template="/template/layout.xhtml"> 
+    <ui:define name="main">
+    	<div class="row title silver paralel center"><h:outputText value="#{cursoMB.curso.nome}" /></div>
+    	<div class="row"></div>
+    	<h:dataTable styleClass="flat border" value="#{cursoMB.listarGrade()}" var="disciplina">
+			<h:column headerClass="nome">
+				<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{disciplina.nome}" />
+			</h:column>
+			<h:column headerClass="nome">
+				<f:facet name="header">Silga</f:facet>
+				<h:outputText value="#{disciplina.label}" />
+			</h:column>
+			<h:column headerClass="cargaHoraria">
+				<f:facet name="header">Carga Horária</f:facet>
+				<h:outputText value="#{disciplina.cargaHoraria} horas" />
+			</h:column>
+			<h:column headerClass="nome">
+				<f:facet name="header">Descrição</f:facet>
+				<h:outputText value="#{disciplina.descricao}" />
+			</h:column>
+    	</h:dataTable>
+		<div class="row">
+			<h:form>
+				<h:commandButton action="#{navMB.redirect('cursos/cursos')}" styleClass="ruby" title="Retornar" value="Retornar" />
+			</h:form>
+		</div>
+    	<style>
+    		.cargaHoraria{
+    			width: 150px;
+    		}
+    	</style> 
+    </ui:define>
+</ui:decorate>

@@ -1,0 +1,83 @@
+<ui:composition 
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+>
+	<h:form>
+	<ul class="menu-sistema">
+		<li class="" title="Pagina Inicial">
+			<h:commandButton action="#{navMB.redirect('home')}" styleClass="logo" value=""/>
+		</li>
+		<li class="title"><h2></h2></li>
+		<li class="user menu_usuario" style="width:150px;">
+		    <h:graphicImage value="#{resource['images/sistema/icones/user.png']}" />
+		    <h:outputLabel value="#{sessaoMB.usuario.nomeUsuario}" />
+		</li>
+	</ul>
+	</h:form>
+	<h:form>
+	<ul id="menuNavegacao">	
+		<li class="dropDown">
+			<h:commandButton action="#{navMB.redirect('home')}" value="Home"/>
+		</li>
+		<ui:repeat var="menu" value="#{menuMB.menu}">
+			<li class="dropDown">			
+				<h:commandButton  action="#{navMB.goToHome}" onmouseover="dropDown('m#{menu.codigo}');" onclick="loader(true);" value="#{menu.titulo}"/>
+				<nav class="dropdown-content" id="m#{menu.codigo}">
+					<ui:repeat var="submenu" value="#{menu.submenu}">
+						<li><h:commandButton action="#{navMB.redirect(submenu.url)}" onclick="loader(true);" value="#{submenu.label}"/></li>
+					</ui:repeat>
+				</nav>
+			</li>
+		</ui:repeat>
+	
+	</ul >
+	</h:form>
+	<div class="menu_usuario" id="containMenUsuario">
+	    <p class="userName">
+			<h:outputLabel value="#{sessaoMB.usuario.nomeCompleto}"/>	
+	    </p>
+	    <h:form>
+	    <ul>				
+	        <li><h:commandButton action="#{sessaoMB.logout}" value="Sair" /></li>
+	    </ul>
+	    </h:form>
+	</div>
+	<style>
+	.sd header .menu-sistema .logo{
+		background-color: rgba(0,0,0,0)!important;
+	}
+	.sd header ul#menuNavegacao input{
+		background: none !important;
+		color: inherit;
+		min-width: 80px;
+	}
+	.sd header .dropdown-content input{
+		color: black !important;
+		float: none;
+		font-weight: normal !important;
+		text-decoration: none;
+		display: block;
+		text-align: left;
+		width: 100%;
+	}
+	.sd header .dropdown-content li{
+		color: #5c5c5c;
+		display: block !important;
+	}
+	.sd header .dropdown-content li:hover{
+		background-color: #ddd !important; 
+	}
+	.sd header .menu_usuario ul li input{
+		background: none;
+		padding: 5px 0px !important;
+		text-align: left;
+		width: 100%;
+	}
+	.sd header .menu_usuario ul li input:hover{
+		color: #fff !important;
+	}
+	</style>	
+</ui:composition>

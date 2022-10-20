@@ -1,0 +1,27 @@
+<ui:decorate
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    template="/template/layout.xhtml">
+<ui:define name="main">
+	<div class="title center silver paralel">Associar Disciplina Por Professor</div>
+	<div class="row"></div>
+	<div class="row" style="max-width: 400px">
+		<table class="light">
+			<thead>
+				<th>Nome</th>
+			</thead>
+		</table>
+		<h:dataTable class="light" value="#{disciplinaControlador.listarProfessoresAssociados}" var="professor" >
+			<h:column>
+				<h:outputText value="#{professor.nomeCompleto}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{professor}"/>
+			</h:column>
+		</h:dataTable>
+	</div>
+</ui:define>
+</ui:decorate>

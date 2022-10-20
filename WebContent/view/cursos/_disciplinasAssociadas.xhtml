@@ -1,0 +1,28 @@
+<ui:decorate 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    template="/template/layout.xhtml"> 
+    <ui:define name="main">
+    	<h:dataTable value="renderizarGradeUsuarioLogado()" var="curso">
+			<h:column>
+				<f:facet name = "header">Disciplina</f:facet>
+				<h:outputText value="#{disciplina.nome}" />
+			</h:column>
+			<h:column>
+				<f:facet name = "header">Sigla Disciplina</f:facet>
+				<h:outputText value="#{disciplina.nome}" />
+			</h:column>
+			<h:column>
+				<f:facet name = "header">Carga Horária</f:facet>
+				<h:outputText value="#{disciplina.nome}" />
+			</h:column>
+			<h:column>
+				<f:facet name = "header">Docente</f:facet>
+				<h:outputText value="#{disciplina.nome}" />
+			</h:column>
+    	</h:dataTable>
+    </ui:define>
+</ui:decorate>

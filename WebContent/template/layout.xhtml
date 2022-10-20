@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+   	xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <h:outputStylesheet library="css" name="template/default.css" />
+    <h:outputStylesheet library="css" name="template/buttons.css" />
+    <h:outputStylesheet library="css" name="template/forms.css" />
+    <h:outputStylesheet library="css" name="template/modal.css" />
+    <h:outputStylesheet library="css" name="template/tables.css" />
+    <h:outputStylesheet library="css" name="template/warning.css" />
+    <h:outputScript name="jsf.js" library="javax.faces" target="head" />
+    <h:outputScript library = "js" name = "lib\jQuery_3_3.js" />
+    <h:outputScript library = "js" name = "lib\jQueryUi.js" />
+    <h:outputScript library = "js" name = "template\default.js" />
+    <title>Gerenciamento Escolar</title>
+</h:head>
+<h:body class="sd">
+    <div class="content">
+        <header>
+            <ui:insert name="header">
+                <ui:include src="_header.xhtml"></ui:include>
+            </ui:insert>
+        </header>
+        <div class="main">
+            <ui:insert name="main"></ui:insert>
+        </div>
+    </div>
+    <footer>
+        <ui:insert name="header">
+            <ui:include src="_footer.xhtml"></ui:include>
+        </ui:insert>
+    </footer>
+    <div class="loader"></div>
+</h:body>
+</html>

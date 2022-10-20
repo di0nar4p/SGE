@@ -1,0 +1,142 @@
+/**
+* @Desc: 	Desing  sd-form, desenvolvido para as informações gerais do sistema;
+* @Author: 	Eduardo Marinho;
+* @Version:	1.0.230118
+**/
+
+/**
+* @desc: adiciona uma coloração nos elementos de preenchimento obrigatório de um formulário
+*		 para ser utilizado, o elemento deve possuir o atributo "required".
+**/
+input:required, select:required, textarea:required{
+	background-color: #f4fbff  !important;
+}
+
+/**
+* @desc: estilo de formulário com cores brancas e linhas claras.
+**/
+form.light label{
+	color: #5c5c5c;
+	font-size: 14px;
+	font-weight: bold;
+}
+form.light input[type="text"],
+form.light input[type="password"],
+form.light select,
+form.light textarea{
+	background-color: #FBFBFB;
+	border: 1px solid #ccc;
+	color: #2590bb;
+}
+form.light input[type="text"]:focus,
+form.light input[type="password"]:focus,
+form.light select:focus,
+form.light textarea:focus{
+	box-shadow: 0px 0px 2px 1px #2590bb;
+}
+
+form.light input[type="text"],
+form.light input[type="password"],
+form.light select,
+form.light textarea{
+	border-radius: 5px;
+	margin: 10px 0px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	padding-left: 1%;
+	padding-right: 2%;
+	width: 96%; /* width - (legtPadding + rightPadding)*/
+}
+form.light select{
+	cursor: pointer;
+	width: 220px;
+}
+form.light table{
+	width: 100%;
+}
+form.light textarea{
+	resize: none;
+	width: 96%;
+}
+input.lf-small,
+select.lf-small{
+	max-width: 50px !important;
+}
+select.lf-medium{
+	max-width: 100px;
+}
+form table th{ text-align: left;}
+
+/*Finder*/
+
+.sd form.finder input[type="text"], .sd form.finder input[type="search"]{
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 8px 2px;
+	width: calc(100% - 105px)!important;
+}
+.sd form.finder button, .sd form.finder input[type="button"], .sd form.finder input[type="submit"]{
+	border-radius: 0px !important;
+	float: right;
+	position: relative;
+	top: -45px;
+}
+
+/*HACKS*/
+.sd form hr{
+	filter: opacity(10%);
+	margin: 20px 0px;
+}
+
+form.padding{
+	padding: 10px;
+}
+.sd form input.cep,
+.sd form input.numeroLogradouro,
+.sd form select.operadora,
+.sd form input.data,
+.sd form select.uf{ 
+	max-width: 80px;
+}
+.sd form input.cel,
+.sd form input.cpf,
+.sd form input.orgaoExpedidorRG,
+.sd form input.rg,
+.sd form input.tel{
+	max-width: 100px;
+}
+.sd form select.estadoCivil,
+.sd form select.sexo{
+	max-width: 120px;
+}
+
+/*Section in forms*/
+form section{
+	border-radius: 2px;
+	font-size: 13px;
+	padding: 8px 5px;
+	margin: 10px auto;
+	width: auto;
+}
+form section.border{
+	border: 0px;
+	border-left: 5px solid!important;
+}
+form section .title{
+	font-size: 14px !important; 
+}
+
+@media only screen and (max-device-width:800px){
+	
+	form.light input[type="text"],
+	form.light input[type="password"],
+	form.light select,
+	form.light textarea{
+		width: 98%; /* width - (legtPadding + rightPadding)*/
+	}
+}
+@media only screen and (min-width:800px){
+	form .toDesktop{
+		display: inline-table;
+	}
+}

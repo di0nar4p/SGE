@@ -1,0 +1,60 @@
+<ui:decorate 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    template="/template/layout.xhtml"> 
+    <ui:define name="main">
+    	<div class="row title silver paralel center">Turmas</div>
+		<div class="row">
+    		<h:form rendered="sessaoMB.usuario.tipoUsuario.codigo == 3 || sessaoMB.usuario.tipoUsuario.codigo == 4 || sessaoMB.usuario.tipoUsuario.codigo == 5 || sessaoMB.usuario.tipoUsuario.codigo == 6">
+    			<h:commandButton action="#{turmaMB.cadastrar()}" id="btnCadastrar" styleClass="emerald" title="Cadastrar Turmas" value="Nova Turma" />
+    		</h:form>
+    	</div>
+    	<div class="row">
+    		<h:form styleClass="finder">
+    			<h:inputText id="pesquisar" name="pesquisar" placeholder="Pesquisar..." title="Pesquisar" value="#{turmaMB.turma.misc}" />
+    			<h:commandButton action="#{turmaMB.pesquisar()}" id="btn-pesquisar" styleClass="sapphire" title="Pesquisar" value="Pesquisar" />
+    		</h:form>
+    	</div>
+    	<div class="row">
+    	<h:form>
+    		<h:dataTable styleClass="row flat border" value="#{turmaMB.lista}" var="turma">
+    			<h:column>
+    				<f:facet name="header">Nome</f:facet>
+    				<h:outputText value="#{turma.nome}" />
+				</h:column>
+				<h:column>
+    				<f:facet name="header">Sigla</f:facet>
+    				<h:outputText value="#{turma.label}" />
+    			</h:column>
+				<h:column>
+    				<f:facet name="header">Curso</f:facet>
+    				<h:outputText value="#{turma.misc}" />
+    			</h:column>
+				<h:column headerClass="min_size">
+    				<f:facet name="header">Incluida em:</f:facet>
+    				<h:outputText value="#{turma.data}" />
+    			</h:column>
+    			<h:column headerClass="min_size">
+    				<f:facet name="header">Ano Letivo</f:facet>
+    				<h:outputText value="#{turma.anoLetivo}" />
+    			</h:column>
+    			
+    		</h:dataTable>
+    	</h:form>
+    	</div>
+		<div class="row">
+			<h:form>
+				<h:commandButton action="#{navMB.redirect('home')}" styleClass="ruby" title="Retornar" value="Retorna" />
+			</h:form>
+		</div>
+		<style>
+			.min_size{width: 100px;}
+			form.finder input[type="submit"]{
+				top: -35px !important;
+			}
+		</style>
+    </ui:define>
+</ui:decorate>

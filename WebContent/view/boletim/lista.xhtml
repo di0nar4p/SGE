@@ -1,0 +1,51 @@
+<ui:decorate 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    template="/template/layout.xhtml"> 
+    <ui:define name="main">
+    	<div class="row title silver paralel center">Meus Boletins</div>
+		<div class="row">
+    		<h:form styleClass="finder">
+				<h:inputText id="pesquisar" name="pesquisar" placeholder="Pesquisar..." value="#{boletimMB.boletim.misc}" />
+				<h:commandButton action="#{boletimMB.pesquisar()}" id="btn-pesquisar"  styleClass="sapphire" value="Pesquisar" />
+    		</h:form>
+    	</div>
+		<div class="row">
+    		<h:outputLabel value="Total de registros: #{boletimMB.qtd}" />
+    	</div>
+    	<h:form>
+			<h:dataTable styleClass="row flat border" value="#{boletimMB.lista}" var="boletim">		
+				<h:column headerClass="year">
+					<f:facet name = "header">Ano</f:facet>
+					<h:outputText value="#{boletim.ano}" />
+				</h:column>
+				<h:column>
+					<f:facet name = "header">Curso</f:facet>
+					<h:outputText value="#{boletim.curso}" />
+				</h:column>
+				<h:column headerClass="action">					
+					<div class="center">
+						<h:commandLink action="#{boletimMB.renderizarBoletim}" styleClass="icon icon_journal" title="Visualizar boletim" value="">
+							<f:setPropertyActionListener target="#{boletimMB.boletim}" value="#{boletim}"  />
+						</h:commandLink>
+					</div>
+				</h:column>
+			</h:dataTable>
+			</h:form>
+			<div class="row">
+				<h:form>
+					<h:commandButton action="#{navMB.goToHome}" styleClass="ruby" title="Retornar" value="Retornar" />
+				</h:form>
+			</div>
+		<style>
+			.action{width: 20px;}
+			.year{width: 80px;}
+			form.finder input[type="submit"]{
+				top: -35px !important;
+			}
+		</style>
+    </ui:define>
+</ui:decorate>

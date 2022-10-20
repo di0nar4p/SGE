@@ -1,0 +1,26 @@
+<ui:decorate 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    template="/template/layout.xhtml"> 
+    <ui:define name="main">
+    	<div class="row title silver paralel center">Editar Curso</div>
+    	<div class="row"></div>
+		<h:form class="light">
+			<h:outputLabel value="Nome" />
+			<h:inputText id="nome" value="#{cursoMB.cursoSelecionado.nome}" />
+			<h:outputLabel value="Carga Horária" />
+			<h:inputText id="cargaHoraria" value="#{cursoMB.cursoSelecionado.cargaHoraria}" />
+			<h:outputLabel value="Duração" />
+			<h:inputText id="duracao" value="#{cursoMB.cursoSelecionado.duracao}"/>
+			<h:outputLabel value="Descrição" />
+			<h:inputTextarea id="descricao"  value="#{cursoMB.cursoSelecionado.descricao}"/>
+	    	<div class="row">
+				<h:commandButton action="#{navMB.redirect('cursos/cursos')}" styleClass="ruby" title="retornar" value="Retornar" />
+				<h:commandButton action="#{cursoMB.editar}" class="emerald" title="Salvar alterações" value="Salvar" />
+			</div>
+		</h:form>
+    </ui:define>
+</ui:decorate>

@@ -1,0 +1,104 @@
+/**
+* @Desc: 	Design desenvolvido para aplicação de blocos de textos
+*			ou informações com destaque.
+* @Author: 	Eduardo Marinho;
+* @Version:	1.0.220118
+**/
+
+/**
+* @Desc: deve ser utilizado quando os elementos serão avisos para o usuário,
+*		 geralmente erros, alertas ou notificações de formulários. Prioritariamente,
+*		 aplique esta regra em uma DIV.
+**/
+.wb, article.info{
+	display: none;
+	border-radius: 2px;
+	font-size: 13px;
+	padding: 8px 5px;
+	margin: 10px auto;
+	width: auto;
+}
+
+/**
+* @desc: define uma área para inserir conteúdo de texto.
+**/
+article.info{
+	display: block;
+}
+
+/**
+* @desc: define uma borda esquerda para o bloco de informação.
+**/
+article.border, div.border{
+	border: 0px;
+	border-left: 5px solid!important;
+}
+article.paralel, div.paralel{
+	border: 0px;
+	border-left: 5px solid!important;
+	border-right: 5px solid!important;
+}
+/**
+* @desc: classes de apoio para o conteúdo deste componente
+**/
+article.help{
+	display: none;
+}
+article.info > .title{
+	font-size: 14px;
+	padding: 5px 0px;
+	text-align: left;
+}
+article.info > .list{
+	padding-left:20px ;
+}
+article.info > .list li{
+	list-style: disclosure-closed;
+}
+article.info ol.instructions{
+	padding: 2px 0px;
+	padding-left: 20px;
+}
+article.info ol.instructions li{
+	list-style: disclosure-closed;
+}
+
+/**
+* @Desc: esquema de cores para esse componente.
+**/
+.blue{
+	background-color: #d9edf7;
+	border: 1px solid #bce8f1;
+	color: #31708f !important;
+}
+.silver{
+	background-color: #f2f2f2;
+	border: 1px solid #a5b1c2;
+	color: #a5b1c2!important;
+}
+.green{
+	background-color: #dff0d8;
+	border: 1px solid #d6e9c6;
+	color: #3c763d;
+}
+.red{
+	background-color: #f2dede;
+	border: 1px solid #ebccd1;
+	color: #a94442;
+}
+.tomato{
+	background-color: wheat;
+	border: 1px solid tomato;
+	color: white;	
+}
+.yellow{
+	background-color: #FFF59D;
+	border: 1px solid #FFE082;
+	color: #FFA726;
+}
+
+/**
+* @desc: estados de exibição do componente.
+**/
+.block{display: block;}
+.hide{display: none;}

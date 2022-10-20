@@ -1,0 +1,54 @@
+<ui:decorate 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    template="/template/layout.xhtml"> 
+    <ui:define name="main">
+    	<h:form>
+    	    <div class="row title silver paralel center"><h:outputText value="#{boletimMB.nomeCurso(param['cod'])}" /></div>
+    		<div class="row"></div>
+    		<h:inputHidden value="#{boletimMB.teste(param['cod'])}" />
+    		<h:dataTable styleClass="flat border" value="#{boletimMB.notas}" var="nota" >
+				<h:column headerClass="year">
+					<f:facet name = "header">Disciplina</f:facet>
+					<h:outputText value="#{nota.disciplina}" />
+				</h:column>
+				<h:column headerClass="year">
+					<f:facet name = "header">Primeira Nota</f:facet>
+					<h:outputText value="#{nota.primeiraNota}" />
+				</h:column>
+				<h:column headerClass="year">
+					<f:facet name = "header">Segunda Nota</f:facet>
+					<h:outputText value="#{nota.segundaNota}" />
+				</h:column>
+				<h:column headerClass="year">
+					<f:facet name = "header">Terceira Nota</f:facet>
+					<h:outputText value="#{nota.terceiraNota}" />
+				</h:column>
+				<h:column headerClass="year">
+					<f:facet name = "header">Quarta Nota</f:facet>
+					<h:outputText value="#{nota.quartaNota}" />
+				</h:column>
+				<h:column headerClass="year">
+					<f:facet name = "header">Média</f:facet>
+					<h:outputText value="#{nota.media}" />
+				</h:column>
+				<h:column headerClass="year">
+					<f:facet name = "header">Nota da Final</f:facet>
+					<h:outputText value="#{nota.notaFinal}" />
+				</h:column>
+				<h:column headerClass="year">
+					<f:facet name = "header">Situação</f:facet>
+					<h:outputText value="Aprovado" />
+				</h:column>
+    		</h:dataTable>
+    	</h:form>
+		<div class="row">
+			<h:form>
+				<h:commandButton action="#{navMB.redirect('boletim/lista')}" styleClass="ruby" title="Retornar" value="Retornar" />
+			</h:form>
+		</div>
+    </ui:define>
+</ui:decorate>

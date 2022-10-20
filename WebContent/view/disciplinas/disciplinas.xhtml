@@ -1,0 +1,58 @@
+<ui:decorate 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    template="/template/layout.xhtml"> 
+    <ui:define name="main">
+    	<div class="row title silver paralel center">Disciplinas</div>
+    	<div class="row">
+    		<h:form>
+    			<h:commandButton action="#{navMB.redirect('disciplinas/_cadastrar')}" id="btnCadastrar" styleClass="emerald" title="Cadastrar Disciplina" value="Nova Disciplina" />
+    		</h:form>
+    	</div>
+    	<div class="row">
+    		<h:form styleClass="finder">
+    			<h:inputText id="pesquisa" name="pesquisa" placeholder="Pesquisar..." title="Pesquisar" value="#{disciplinaMB.disciplina.misc}" />
+    			<h:commandButton action="#{disciplinaMB.pesquisar()}" styleClass="sapphire" title="Pesquisar" value="Pesquisar" />
+    		</h:form>
+    	</div>
+    	<div class="row">
+    		<h:outputLabel value="Total de registros: #{disciplinaMB.qtd}" />
+    	</div>
+    	<h:form>
+		<h:dataTable styleClass="row flat border" value="#{disciplinaMB.lista}" var="disciplina">		
+			<h:column>
+				<f:facet name = "header">Nome</f:facet>
+				<h:outputText value="#{disciplina.nome}" />
+			</h:column>
+			<h:column>
+				<f:facet name = "header">Sigla</f:facet>
+				<h:outputText value="#{disciplina.label}" />
+			</h:column>			
+			<h:column>
+				<f:facet name = "header">Carga Horária</f:facet>
+				<h:outputText value="#{disciplina.cargaHoraria} horas" />
+			</h:column>			
+			<h:column>
+				<div class="center">
+					<h:commandLink action="#{disciplinaMB.removerRegistro()}" styleClass="icon icon_delete" title="Remover" value="">
+						<f:setPropertyActionListener target="#{disciplinaMB.disciplina}" value="#{disciplina}"  />
+					</h:commandLink>
+				</div>
+			</h:column>		
+		</h:dataTable>
+		</h:form>
+		<div class="row">
+			<h:form>
+				<h:commandButton action="#{navMB.goToHome}" styleClass="ruby" title="Retornar" value="Retornar" />
+			</h:form>
+		</div>
+		<style>
+			form.finder input[type="submit"]{
+				top: -35px !important;
+			}
+		</style>
+    </ui:define>
+</ui:decorate>

@@ -1,0 +1,23 @@
+<ui:decorate 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    template="/template/layout.xhtml"> 
+    <ui:define name="main">
+    	<div class="row title silver paralel center">Instituição de Ensino</div>
+    	<h:dataTable>
+    		<h:column>
+    			<f:facet name="Nome">Nome</f:facet>
+    			<h:outputText value="asd" />
+    		</h:column>
+    		<h:column>
+    			<f:facet name="Razão Social">Razão Social</f:facet>
+    		</h:column>
+    		<h:column>
+    			<f:facet name="CNPJ">CNPJ</f:facet>
+    		</h:column>
+    	</h:dataTable>
+    </ui:define>
+</ui:decorate>

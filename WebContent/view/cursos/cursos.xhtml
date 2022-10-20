@@ -1,0 +1,71 @@
+<ui:decorate 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    template="/template/layout.xhtml"> 
+    <ui:define name="main">
+    	<div class="row title silver paralel center">Cursos</div>
+    	<div class="row">
+	    	<h:form rendered="#{sessaoMB.usuario.tipoUsuario.codigo == 4 || sessaoMB.usuario.tipoUsuario.codigo == 5 || sessaoMB.usuario.tipoUsuario.codigo == 6 }">
+				<h:commandButton action="#{navMB.redirect('cursos/_cadastrar')}" styleClass="emerald" title="Cadastrar novo curso" value="Novo curso"/>
+	    	</h:form>
+    	</div>
+    	<div class="row">
+    		<h:form styleClass="finder">
+				<h:inputText id="pesquisar" name="pesquisar" placeholder="Pesquisar..." value="#{cursoMB.curso.misc}" />
+				<h:commandButton action="#{cursoMB.pesquisar()}" id="btn-pesquisar"  styleClass="sapphire" value="Pesquisar" />
+    		</h:form>
+    	</div>
+    	<div class="row">
+    		<h:outputLabel value="Total de registros: #{cursoMB.qtd}" />
+    	</div>
+    	<div class="row" id="containTable">
+			<h:form>
+			<h:dataTable class="row flat border" id="tableCursos" value="#{cursoMB.lista}" var="curso">		
+				<h:column headerClass="nome">
+					<f:facet name = "header">Nome</f:facet>
+					<h:outputText value="#{curso.nome}" />
+				</h:column>
+				<h:column headerClass="descricao">
+					<f:facet name = "header">Descrição</f:facet>
+					<h:outputText styleClass="descricao justify" value="#{curso.descricao}" />
+				</h:column>
+				<h:column headerClass="cargaHoraria">
+					<f:facet name = "header">Carga Horária</f:facet>
+					<h:outputText styleClass="cargaHoraria" value="#{curso.cargaHoraria}" />
+				</h:column>
+				<h:column headerClass="duracao">
+					<f:facet name = "header">Duração</f:facet>
+					<h:outputText styleClass="duracao" value="#{curso.duracao}" />
+				</h:column>
+				<h:column headerClass="size" rendered="#{sessaoMB.usuario.tipoUsuario.codigo == 4 || sessaoMB.usuario.tipoUsuario.codigo == 5 || sessaoMB.usuario.tipoUsuario.codigo == 6 }">
+					<h:commandLink action="#{cursoMB.goToEditar}" styleClass="icon icon_edit" title="Editar" value="">
+						<f:setPropertyActionListener value="#{curso}" target="#{cursoMB.cursoSelecionado}" />
+					</h:commandLink>
+					<h:commandLink action="#{navMB.redirect('cursos/_grade')}" rendered="#{sessaoMB.usuario.tipoUsuario.codigo == 6 || sessaoMB.usuario.tipoUsuario.codigo == 5 || sessaoMB.usuario.tipoUsuario.codigo == 3  || sessaoMB.usuario.tipoUsuario.codigo == 4}" styleClass="icon icon_journal" title="Visualizar Grade">
+						<f:setPropertyActionListener value="#{curso}" target="#{cursoMB.curso}" />
+					</h:commandLink>
+				</h:column>
+			</h:dataTable>
+			</h:form>
+		</div>
+		<div class="row">
+			<h:form>
+				<h:commandButton action="#{navMB.goToHome}" styleClass="ruby" title="Retornar" value="Retornar" />
+			</h:form>
+		</div>
+		<style>
+			.nome{
+				min-width: 200px;	
+			}
+			.size{
+				min-width: 40px;
+			}
+			form.finder input[type="submit"]{
+				top: -35px !important;
+			}
+		</style>
+    </ui:define>
+</ui:decorate>

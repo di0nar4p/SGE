@@ -1,0 +1,31 @@
+<ui:decorate 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    template="/template/layout.xhtml"> 
+    <ui:define name="main">
+    	<div class="row title silver paralel center"> Professor: <h:outputLabel value="#{professorController.usuarioSelecionado.nomeCompleto}" /></div>
+    	
+    	<h:form>
+			<h:outputLabel for="nome" value="Nome" />
+			<h:inputText id="nome" value="#{professorController.usuarioSelecionado.nomeCompleto}" disabled="true" />
+				
+			<h:outputLabel for="contatos" value="Contato" />
+			<h:inputText id="contatoCelular" value="#{professorController.usuarioSelecionado.contato.celular}" disabled="true" />
+			<h:inputText id="contatoTelefone" value="#{professorController.usuarioSelecionado.contato.telefone}" disabled="true" />
+			<h:inputText id="contatoEmail" value="#{professorController.usuarioSelecionado.contato.email}" disabled="true" />
+			
+			<h:outputLabel for="matricula" value="Matrícula" />
+			<h:inputText id="matricula" value="#{professorController.usuarioSelecionado.matricula}" disabled="true" />
+			
+			
+			<h:outputLabel for="dataNascimento" value="Data Nascimento" />
+			<h:inputText id="dataNascimento" value="#{professorController.usuarioSelecionado.dataNascimento}" disabled="true">
+				<f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+			</h:inputText>	
+			<h:commandButton action="../../index.xhtml?faces-redirect=true" value="Voltar" />
+		</h:form>
+    </ui:define>
+</ui:decorate>

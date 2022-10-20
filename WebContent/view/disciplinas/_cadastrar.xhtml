@@ -1,0 +1,42 @@
+<ui:decorate
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    template="/template/layout.xhtml">
+<ui:define name="main">
+	<div class="title center silver paralel">Cadastro de Discicplina</div>
+	<div class="row"></div>
+	<h:form class="light">
+		<div class="row toDesktop">
+			<h:outputLabel value="Nome" />
+			<h:inputText class="nome" id="nome" name="nome" value="#{disciplinaMB.disciplina.nome}" />
+		</div>
+		<div class="row toDesktop">
+			<h:outputLabel value="Label" />
+			<h:inputText id="label" value="#{disciplinaMB.disciplina.label}" />
+		</div>
+		<div class="row toDesktop">
+			<h:outputLabel value="Carga Horária" />
+			<h:inputText class="cargaHoraria" id="cargaHoraria" value="#{disciplinaMB.disciplina.cargaHoraria}"/>
+		</div>
+		<div class="row">
+			<h:outputLabel value="Descrição" />
+			<h:inputTextarea id="descricao" value="#{disciplinaMB.disciplina.descricao}"/>
+		</div>			
+		<div class="row">
+			<button class="ruby" onclick="redirect('disciplinas'); return false;">Cancelar</button>
+			<h:commandButton action="#{disciplinaMB.cadastrar}" class="emerald" value="Salvar"  />
+		</div> 
+	</h:form>
+	<style>
+		@media only screen and (min-width:800px){
+			.cargaHoraria{
+				max-width: 80px!important;
+			}
+			.nome{min-width: 300px;}
+		}
+	</style>
+</ui:define>
+</ui:decorate>

@@ -1,0 +1,129 @@
+<ui:decorate
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/template/layout.xhtml"
+>
+<ui:define name="main">
+	<div class="row center title silver paralel">Cadastro de Usuário</div>
+	<div class="row"></div>
+	<h:form binding="#{form}" class="light">
+		<section class="border yellow">
+			<div class="toDesktop">
+				<h:outputLabel for="nomeCompleto" value="Nome Completo" />
+				<h:inputText class="nome" id="nomeCompleto" value="#{usuarioMB.usuario.nomeCompleto}" />
+			</div>
+			<div class="toDesktop">
+				<h:outputLabel for="dataNascimento" value="Data Nascimento" />
+				<h:inputText id="dataNascimento" value="#{usuarioMB.usuario.dataNascimento}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:inputText>
+			</div>
+			<div class="toDesktop">
+				<h:outputLabel for="tipoUsuario" value="Tipo Usuário" style="display:block" />
+				<h:selectOneMenu id="tipoUsuario" value="#{usuarioMB.usuario.tipoUsuario.codigo}">
+					<f:selectItem itemLabel="- Selecione um" itemValue="" />
+					<f:selectItems value="#{usuarioMB.tipoUsuario}" var="tipoU" itemLabel="#{tipoU.nome}" itemValue="#{tipoU.codigo}"/>
+				</h:selectOneMenu>
+			</div>
+		</section>
+		
+		<section class="yellow border" id="dadosResponsavel">
+			<div class="toDesktop">
+				<h:outputLabel for="nomePrimeiroResponsavel"  value="Primeiro Responsável" />
+				<h:inputText id="nomePrimeiroResponsavel" style="width: 300px!important" value="#{usuarioMB.usuario.nomeUsuario}" />
+			</div>
+			<div class="toDesktop">
+				<h:outputLabel for="nomeSegundoResponsavel" value="Segundo Responsável" />
+				<h:inputSecret id="nomeSegundoResponsavel" style="width: 300px!important" value="#{usuarioMB.usuario.senha}" />
+			</div>
+		</section>
+		
+		<section class="green border" id="dadosAcesso">
+			<div class="toDesktop">
+				<h:outputLabel for="nomeacesso" value="Nome Acesso" />
+				<h:inputText id="nomeacesso" value="#{usuarioMB.usuario.nomeUsuario}" />
+			</div>
+			<div class="toDesktop">
+				<h:outputLabel for="senha" value="Senha" />
+				<h:inputSecret id="senha" value="#{usuarioMB.usuario.senha}" />
+			</div>
+		</section>
+		
+		<section class="green border" id="dadosEndereco">
+			<h3>Endereço</h3>
+			<h:outputLabel for="logradouro" value="Logradouro" />
+			<h:inputText id="logradouro" value="#{usuarioMB.usuario.endereco.logradouro}" />
+			<h:outputLabel for="numero" value="Número" />
+			<h:inputText id="numero" value="#{usuarioMB.usuario.endereco.numero}" />
+			<h:outputLabel for="bairro" value="Bairro" />
+			<h:inputText id="bairro" value="#{usuarioMB.usuario.endereco.bairro}" />
+			<h:outputLabel for="complemento" value="Complemento" />
+			<h:inputText id="complemento" value="#{usuarioMB.usuario.endereco.complemento}" />
+			<h:outputLabel for="cidade" value="Cidade" />
+			<h:inputText id="cidade" value="#{usuarioMB.usuario.endereco.cidade}" />
+			<h:outputLabel for="uf" value="UF" />
+			<h:selectOneMenu id="uf" value="#{usuarioMB.usuario.endereco.uf.codigo}">
+				<f:selectItem itemLabel="-  Selecione um" itemValue="-1" />
+				<f:selectItems value="#{usuarioMB.listarEstados()}" var="uf" itemLabel="#{uf.nome}" itemValue="#{uf.codigo}" />
+			</h:selectOneMenu>
+			<h:outputLabel for="cep" value="CEP" />
+			<h:inputText id="cep" value="#{usuarioMB.usuario.endereco.cep}" />
+		</section>
+		
+		<section class="green border" id="dadosContato">
+			<h3>Contatos</h3>
+			<div class="toDesktop">
+				<h:outputLabel for="telefone" value="Telefone" />
+				<h:inputText id="telefone" value="#{usuarioMB.usuario.contato.telefone}" />
+			</div>
+			<div class="toDesktop">
+				<h:outputLabel for="telefoneCelular" value="Telefone Celular" />
+				<h:inputText id="telefoneCelular" value="#{usuarioMB.usuario.contato.celular}" />
+			</div>
+			<div class="toDesktop">
+				<h:outputLabel for="email" value="E-mail" />
+				<h:inputText class="nome" id="email" value="#{usuarioMB.usuario.contato.email}" />
+			</div>
+		</section>
+		<h:commandButton action="#{usuarioMB.cadastrar()}" class="emerald" value="Cadastrar" />
+	</h:form>
+		<link href="css/usuario/acesso.css" rel="stylesheet" type="text/css" />
+		<style>
+		#dadosAcesso,#dadosEndereco,#dadosContato,#dadosResponsavel{
+			display: none;
+		}
+		@media only screen and (min-width:800px){
+			form input[type="text"]{
+				width: 100px !important; 
+			}
+			.nome{
+				min-width: 400px;
+			}
+		}
+		</style>
+		<script>
+		 $(function(){
+			$("select[name='#{form.clientId}:tipoUsuario']").change(function(){
+				loader(true);
+				if(this.value != -1){
+					if(this.value == 4){
+						$("#dadosEndereco").fadeOut();
+						$("#dadosAcesso, #dadosContato").fadeIn();
+					}else{
+						if(this.value == 2){
+							$("#dadosResponsavel").fadeIn();
+						}
+						$("#dadosAcesso, #dadosEndereco, #dadosContato").fadeIn();
+					}
+				}else{
+					$("#dadosAcesso, #dadosEndereco, #dadosContato").fadeOut();
+				}
+				loader(false);
+			});
+		});
+		</script>
+	</ui:define>
+</ui:decorate>
